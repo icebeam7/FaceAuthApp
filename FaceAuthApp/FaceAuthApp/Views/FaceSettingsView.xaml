@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="FaceAuthApp.Views.FaceSettingsView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:vm="clr-namespace:FaceAuthApp.ViewModels"
+    Title="Settings">
+
+    <ContentPage.BindingContext>
+        <vm:FaceSettingsViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <Grid
+            Margin="20"
+            ColumnDefinitions="*,2*"
+            RowDefinitions="Auto,Auto,Auto,Auto">
+
+            <Label
+                Grid.Row="0"
+                Grid.Column="0"
+                Text="Group Name" />
+            <Label
+                Grid.Row="3"
+                Grid.Column="0"
+                Text="Id" />
+
+            <Entry
+                Grid.Row="0"
+                Grid.Column="1"
+                Text="{Binding Group}" />
+            <Label
+                Grid.Row="3"
+                Grid.Column="1"
+                Text="{Binding Id}" />
+
+            <Button
+                Grid.Row="1"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                Command="{Binding CreateGroupCommand}"
+                Text="Create Group" />
+
+            <ActivityIndicator
+                Grid.Row="2"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                IsRunning="{Binding IsBusy}" />
+        </Grid>
+
+    </ContentPage.Content>
+</ContentPage>

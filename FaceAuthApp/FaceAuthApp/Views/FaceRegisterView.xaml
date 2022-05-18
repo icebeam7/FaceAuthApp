@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="FaceAuthApp.Views.FaceRegisterView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:vm="clr-namespace:FaceAuthApp.ViewModels"
+    Title="Register">
+
+    <ContentPage.BindingContext>
+        <vm:FaceRegisterViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <ScrollView>
+            <Grid
+                Margin="20"
+                ColumnDefinitions="*,2*"
+                RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto">
+
+                <Label Text="Employee Name" />
+                <Label Grid.Row="2" Text="Id" />
+
+                <Entry Grid.Column="1" Text="{Binding Name}" />
+                <Label
+                    Grid.Row="2"
+                    Grid.Column="1"
+                    Text="{Binding Id}" />
+
+                <Button
+                    Grid.Row="1"
+                    Grid.ColumnSpan="2"
+                    Command="{Binding RegisterPersonCommand}"
+                    Text="Register Employee" />
+
+                <ActivityIndicator
+                    Grid.Row="3"
+                    Grid.ColumnSpan="2"
+                    IsRunning="{Binding IsBusy}" />
+
+                <Frame
+                    Grid.Row="4"
+                    Grid.ColumnSpan="2"
+                    Margin="10,0,0,0"
+                    Padding="8"
+                    BackgroundColor="#F4C03E"
+                    CornerRadius="34"
+                    HeightRequest="120"
+                    HorizontalOptions="Start"
+                    VerticalOptions="Start"
+                    WidthRequest="380">
+                    <StackLayout
+                        Padding="5"
+                        Orientation="Horizontal"
+                        Spacing="10">
+
+                        <Grid ColumnDefinitions="Auto" VerticalOptions="Center">
+                            <BoxView
+                                BackgroundColor="White"
+                                CornerRadius="25"
+                                HeightRequest="90"
+                                WidthRequest="90" />
+
+                            <Image
+                                Aspect="AspectFill"
+                                HeightRequest="75"
+                                Source="{Binding PhotoStream}"
+                                WidthRequest="75" />
+                        </Grid>
+
+                        <Grid ColumnDefinitions="Auto">
+                            <BoxView
+                                BackgroundColor="White"
+                                CornerRadius="25"
+                                HeightRequest="90"
+                                WidthRequest="90" />
+
+                            <Image
+                                Aspect="AspectFill"
+                                HeightRequest="75"
+                                Source="{Binding PhotoStream2}"
+                                WidthRequest="75" />
+                        </Grid>
+
+                        <Grid ColumnDefinitions="Auto" VerticalOptions="Center">
+                            <BoxView
+                                BackgroundColor="White"
+                                CornerRadius="25"
+                                HeightRequest="90"
+                                WidthRequest="90" />
+
+                            <Image
+                                Aspect="AspectFill"
+                                HeightRequest="75"
+                                Source="{Binding PhotoStream3}"
+                                WidthRequest="75" />
+                        </Grid>
+                    </StackLayout>
+                </Frame>
+
+                <Button
+                    Grid.Row="5"
+                    Grid.ColumnSpan="2"
+                    Command="{Binding TakePhotoCommand}"
+                    CornerRadius="20"
+                    Text="Take Photo" />
+
+                <Button
+                    Grid.Row="6"
+                    Grid.ColumnSpan="2"
+                    Command="{Binding RegisterPhotosCommand}"
+                    CornerRadius="20"
+                    Text="Register Photos" />
+
+                <Button
+                    Grid.Row="7"
+                    Grid.ColumnSpan="2"
+                    Command="{Binding TrainModelCommand}"
+                    CornerRadius="15"
+                    Text="Train Model" />
+
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
